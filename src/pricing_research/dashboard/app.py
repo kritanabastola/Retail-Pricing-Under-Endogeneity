@@ -6,13 +6,19 @@ Every coefficient is read from ``reports/``. The app does not fit a model.
 from __future__ import annotations
 
 import os
+import sys
 from pathlib import Path
 
 import altair as alt
 import pandas as pd
 import streamlit as st
 
-from pricing_research.dashboard.artifacts import (
+# Community Cloud runs this file without installing the src package.
+_SRC = Path(__file__).resolve().parents[2]
+if str(_SRC) not in sys.path:
+    sys.path.insert(0, str(_SRC))
+
+from pricing_research.dashboard.artifacts import (  # noqa: E402
     ArtifactError,
     confirmatory_price,
     consistency_checks,

@@ -104,6 +104,8 @@ python -m streamlit run src/pricing_research/dashboard/app.py
 
 The app reads the saved result files. It does not refit a model. Set `PRICING_DASHBOARD_SKIP_PANEL=1` to open the pages that do not need the log-sample parquet. Product-week charts use `data/processed/cereals_log_sample.parquet` when that file is present.
 
+To put the same app on a public URL, use [Streamlit Community Cloud](https://share.streamlit.io). Sign in with GitHub, choose this repository and branch `main`, and set the main file to `src/pricing_research/dashboard/app.py`. In advanced settings, choose Python 3.12 or newer. `requirements.txt` is the dependency list Community Cloud installs. The product-week charts stay hidden there because the log-sample parquet is not in the repository.
+
 ## Reports
 
 - Research paper: `reports/research_paper/paper.md`

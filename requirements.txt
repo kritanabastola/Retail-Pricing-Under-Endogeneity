@@ -1,0 +1,5 @@
+numpy>=2.1
+pandas>=2.2
+pyarrow>=17
+altair>=5
+streamlit>=1.39

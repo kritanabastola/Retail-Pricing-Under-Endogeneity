@@ -5,6 +5,7 @@ Every coefficient is read from ``reports/``. The app does not fit a model.
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 from pathlib import Path
@@ -177,10 +178,7 @@ def page_market() -> None:
     stores = store_table(ROOT)
     panel = _panel()
     if panel is None:
-        st.info(
-            "The log-sample file is not loaded, so product-week charts are hidden. "
-            "The counts above come from the saved quality report."
-        )
+        _published_market(products, stores)
         return
     labels = {
         int(row.upc): f"{row.descrip} · {row.size} · UPC {int(row.upc)}"
@@ -241,6 +239,50 @@ def page_market() -> None:
         "Coded means B, C, or S. Blank is not a verified regular-price week. "
         "Unclassified covers G and L, which the manual sections used here do not define."
     )
+
+
+def _published_market(products: pd.DataFrame, stores: pd.DataFrame) -> None:
+    """Show committed summaries when the row-level log sample is absent."""
+    st.info(
+        "The row-level log sample is not on this site, so the product and store "
+        "filters are unavailable. The tables and figures below are the published "
+        "summaries of that file."
+    )
+    st.subheader("Products")
+    product_show = products.drop(columns=["com_code"], errors="ignore").rename(
+        columns={
+            "upc": "UPC",
+            "descrip": "Description",
+            "size": "Size",
+            "movement_rows": "Audited rows",
+            "log_sample_rows": "Log-sample rows",
+            "stores": "Stores",
+            "week_min": "First week",
+            "week_max": "Last week",
+            "weeks_observed": "Weeks observed",
+        }
+    )
+    st.dataframe(product_show, hide_index=True, use_container_width=True)
+    st.subheader("Stores")
+    store_show = stores.rename(
+        columns={
+            "store": "Store",
+            "movement_rows": "Audited rows",
+            "log_sample_rows": "Log-sample rows",
+            "upcs": "UPCs",
+            "week_min": "First week",
+            "week_max": "Last week",
+        }
+    )
+    st.dataframe(store_show, hide_index=True, use_container_width=True)
+    st.subheader("Published figures")
+    catalog = ROOT / "reports" / "figures" / "figure_metadata.json"
+    if not catalog.is_file():
+        return
+    for figure in json.loads(catalog.read_text()):
+        path = ROOT / str(figure["path"])
+        if path.is_file():
+            st.image(str(path), caption=f"{figure['title']}. {figure['definition']}")
 
 
 def page_results() -> None:

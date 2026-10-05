@@ -131,4 +131,7 @@ def test_app_script_loads(monkeypatch: pytest.MonkeyPatch) -> None:
     at.sidebar.radio[0].set_value("Market data").run()
     assert not at.exception
     market = " ".join(getattr(item, "value", "") for item in at.info).lower()
-    assert "not loaded" in market
+    assert "published summaries" in market
+    headings = " ".join(getattr(item, "value", "") for item in at.subheader)
+    assert "Published figures" in headings
+    assert "Products" in headings

@@ -2,6 +2,8 @@
 
 How does ready-to-eat cereal movement at Dominick's covary with unit price, and which pricing statements survive once price endogeneity is taken seriously?
 
+Dashboard: https://retail-pricing-under-endogeneity.streamlit.app/
+
 A shelf price and the week's sales are chosen together. A regression of movement on price therefore mixes demand with the chain's pricing rule. This project estimates that association on the Kilts Center cereals panel, audits the instruments that are often used to give it a causal reading, and stops when those instruments fail.
 
 ## Why it matters
@@ -98,13 +100,15 @@ python -m ruff check src tests
 
 ## Dashboard
 
+Hosted app: https://retail-pricing-under-endogeneity.streamlit.app/
+
 ```bash
 python -m streamlit run src/pricing_research/dashboard/app.py
 ```
 
 The app reads the saved result files. It does not refit a model. Set `PRICING_DASHBOARD_SKIP_PANEL=1` to open the pages that do not need the log-sample parquet. Product-week charts use `data/processed/cereals_log_sample.parquet` when that file is present.
 
-To put the same app on a public URL, use [Streamlit Community Cloud](https://share.streamlit.io). Sign in with GitHub, choose this repository and branch `main`, and set the main file to `src/pricing_research/dashboard/app.py`. In advanced settings, choose Python 3.12 or newer. `requirements.txt` is the dependency list Community Cloud installs. The product-week charts stay hidden there because the log-sample parquet is not in the repository.
+The public app is hosted on Streamlit Community Cloud from `src/pricing_research/dashboard/app.py` on branch `main`. `requirements.txt` is the dependency list that host installs. Product-week charts stay hidden there because the log-sample parquet is not in the repository.
 
 ## Reports
 

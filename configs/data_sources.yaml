@@ -1,0 +1,68 @@
+provider: James M. Kilts Center for Marketing, University of Chicago Booth School of Business
+dataset: Dominick's Finer Foods scanner data
+catalog_url: https://www.chicagobooth.edu/research/kilts/research-data/dominicks
+manual_url: https://www.chicagobooth.edu/research/kilts/research-data/-/media/enterprise/centers/kilts/datasets/dominicks-dataset/dominicks-manual-and-codebook_kiltscenter
+manual_version: Created July 2013, updated October 2018
+license: >
+  Academic research purposes only. Working papers and publications that use
+  any portion of the data must acknowledge the James M. Kilts Center,
+  University of Chicago Booth School of Business. Raw files are not committed
+  to this repository.
+historical_scope: >
+  Scanner archive of a defunct Chicago-area chain. Week 1 in the manual begins
+  14 September 1989. Week 400 ends 14 May 1997. Cereals movement data end at
+  week 399 (7 May 1997). Results are not estimates of current consumer behavior.
+
+access_checked_on: 2026-10-05
+public_files_checked:
+  - path: upc_csv-files/upccer.csv
+    http_content_length: 25932
+    data_rows_counted: 490
+    commodity_codes_counted: {311: 490}
+    description_prefixes_counted: {tilde: 36, dollar: 6}
+  - path: upc_csv-files/upcoat.csv
+    http_content_length: 5161
+    data_rows_counted: 96
+  - path: movement_csv-files/wcer.zip
+    http_content_length: 42402094
+    downloaded: true
+    local_gitignored_path: data/raw/wcer.zip
+    csv_rows_counted: 6602582
+    header_matches_oatmeal: true
+  - path: movement_csv-files/woat.zip
+    http_content_length: 7736663
+    downloaded_for_header_check: true
+    retained: true
+    local_gitignored_path: data/raw/woat.zip
+    csv_rows_counted: 1333465
+    csv_name: woat.csv
+    header:
+      - STORE
+      - UPC
+      - WEEK
+      - MOVE
+      - QTY
+      - PRICE
+      - SALE
+      - PROFIT
+      - OK
+      - PRICE_HEX
+      - PROFIT_HEX
+  - path: movement_csv-files/wcso.zip
+    http_content_length: 43140921
+    downloaded: true
+    local_gitignored_path: data/raw/wcso.zip
+    csv_rows_counted: 7011243
+  - path: store-demos-customer-count/demo_stata.zip
+    http_content_length: 168854
+    downloaded: false
+  - path: store-demos-customer-count/ccount_stata.zip
+    http_content_length: 42337187
+    downloaded: false
+
+not_used:
+  - name: Zenodo dominick_dataset.zip
+    doi: 10.5281/zenodo.4004172
+    reason: >
+      A derived collection of profit time series under a different license.
+      It is not the Kilts movement file and is not a source for this project.

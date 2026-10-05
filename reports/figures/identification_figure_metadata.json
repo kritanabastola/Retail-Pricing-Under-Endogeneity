@@ -1,0 +1,12 @@
+[
+  {
+    "figure_id": "identification_01_robustness",
+    "path": "reports/figures/identification_01_robustness.png",
+    "title": "Observational robustness of the cereals association",
+    "sample": "cereals log sample and the pre-specified subsamples named on the axis",
+    "n_rows": 4707776,
+    "units": "log item movement per log dollar of unit price",
+    "definition": "Store-clustered 95 percent intervals. The pale line marks the full-sample confirmatory point estimate. These fits do not estimate a causal elasticity. CubFighter uses few store clusters.",
+    "causal_claim": false
+  }
+]

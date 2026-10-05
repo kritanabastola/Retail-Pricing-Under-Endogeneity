@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+.env
+.DS_Store
+
+# Kilts files are for academic research and are not redistributed from this repository.
+data/raw/*
+data/interim/*
+data/processed/*
+!data/README.md

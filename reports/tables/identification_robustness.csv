@@ -1,0 +1,12 @@
+model_id,status,n,stores,pairs,share_with_unit_price_change,within_pair_reading_allowed,few_store_clusters,estimate,se_cluster_store,ci95_low,ci95_high,role
+R_promo_includes_unclassified,estimated,4707776,93,36443,0.8552259693219548,True,False,-2.0456461079652297,0.025712634765449743,-2.0967136200456515,-1.9945785958848081,M5 with G and L moved into the promotion indicator.
+R_blank_sale_only,estimated,4350772,93,36044,0.8099822439240928,True,False,-1.3833297917314582,0.03343584802651877,-1.4497362719925846,-1.3169233114703318,Pair and week effects on blank SALE rows. Blank is not a confirmed regular price.
+R_coded_sale_only,estimated,345945,93,28420,0.8137579169598874,True,False,-2.6962566636424214,0.029774376499582464,-2.7553911454039937,-2.6371221818808492,Pair and week effects on coded B/C/S rows only.
+R_discontinued_upc,estimated,257674,93,2810,0.9313167259786477,True,False,-2.11576384125327,0.0426906716391929,-2.200551200057325,-2.030976482449215,M5 on UPCs whose description begins with the discontinued mark.
+R_not_discontinued_upc,estimated,4450102,93,33633,0.8488686706508489,True,False,-2.1210801632711154,0.0262345854045833,-2.173184314374044,-2.0689760121681866,M5 on UPCs without the discontinued mark.
+R_high_tier_stores,estimated,1357188,25,10252,0.8597346859149434,True,True,-2.0824829253167314,0.05921580090163815,-2.2046983316232738,-1.960267519010189,M5 on stores coded High in the store codebook.
+R_cubfighter_stores,estimated,517634,9,3824,0.8512029288702929,True,True,-2.1449501537116618,0.05850823132665537,-2.279870377094411,-2.0100299303289124,M5 on CubFighter stores. Few clusters make the interval rough.
+R_weeks_1_through_200,estimated,2528421,86,25195,0.8852947013296288,True,False,-1.8703659935804877,0.03648809270775265,-1.9429140973163659,-1.7978178898446096,M5 on weeks 1–200.
+R_weeks_201_through_399,estimated,2179355,93,26311,0.8595644407282126,True,False,-2.427981976250839,0.03012761029118365,-2.4878180108125947,-2.368145941689083,"M5 on weeks 201–399, which contain the 1995 gap."
+R_adjacent_price_lead,estimated,4509599,93,35622,0.8491943181180169,True,False,-2.3893876890700176,0.024819591006789706,-2.438681539160926,-2.3400938389791093,M5 plus next week's log price when that week is adjacent and observed.
+R_pairs_with_a_price_change,estimated,4634526,93,31167,1.0,True,False,-2.128290801783777,0.026061209969819137,-2.180050614308025,-2.076530989259529,M5 on pairs whose unit price changes by more than $0.001.

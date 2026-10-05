@@ -1,0 +1,22 @@
+[
+  {
+    "figure_id": "scenario_01_revenue",
+    "path": "reports/figures/scenario_01_revenue.png",
+    "title": "Hypothetical revenue on pairs inside the full price menu",
+    "sample": "cereals log sample, last week per pair, full-menu historical support",
+    "n_rows": 4707776,
+    "units": "percent change in dollar revenue",
+    "definition": "Own-price constant-elasticity arithmetic. Not a causal prediction. Competitor response and cross-product substitution are omitted.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "scenario_02_gross_profit",
+    "path": "reports/figures/scenario_02_gross_profit.png",
+    "title": "Hypothetical gross profit if the confirmatory slope were the elasticity",
+    "sample": "cereals log sample, last week per pair, full-menu historical support",
+    "n_rows": 4707776,
+    "units": "percent change in accounting gross profit dollars",
+    "definition": "Unit cost is held at a baseline acquisition-cost proxy. The total is not operating profit and the slope is not causal.",
+    "causal_claim": false
+  }
+]

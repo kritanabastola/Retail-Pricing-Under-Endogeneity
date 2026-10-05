@@ -1,0 +1,96 @@
+# Pre-specified before any demand regression is run.
+# A change to a confirmatory item requires an entry in docs/decision_log.md
+# before estimation. Exploratory items cannot be relabeled as confirmatory
+# after results are seen.
+
+outcome: log_move
+price: log_unit_price
+unit_of_observation: upc_store_week_row_present_in_the_movement_file
+do_not_zero_fill_missing_combinations: true
+
+log_sample_rules:
+  - keep rows with OK equal to 1, because the manual calls OK = 0 trash and says flagged weeks are not used in Kilts analysis
+  - require PRICE > 0, QTY > 0, and MOVE > 0
+  - report the count and share removed by each rule
+  - do not recode nonpositive movement as a small positive number
+  - do not drop rows for having an inconvenient price coefficient
+
+confirmatory_association:
+  id: fe_upc_store_week_promotion
+  equation: >
+    log(MOVE_ist) = alpha_is + gamma_t + beta * log(PRICE_ist / QTY_ist)
+    + delta * 1{SALE_ist in {B, C, S}} + epsilon_ist
+  fixed_effects:
+    - upc_by_store
+    - week
+  not_included:
+    - upc_by_week: would absorb chainwide UPC promotions, which the manual says are the chain's promoted prices
+    - store_by_week: would absorb a category-wide store-week price shift, including a category pricing experiment if one is later established
+  promotion_indicator: incomplete
+  standard_errors: cluster by store
+  sensitivity_standard_errors: cluster by store and week if the estimator supports it
+  claim: conditional association, not a causal elasticity
+
+descriptive_comparisons:
+  - id: pooled_ols
+    fixed_effects: []
+  - id: upc_fe
+    fixed_effects: [upc]
+  - id: upc_and_store_fe
+    fixed_effects: [upc, store]
+  - id: upc_by_store_fe
+    fixed_effects: [upc_by_store]
+  - id: upc_by_store_and_week_fe
+    fixed_effects: [upc_by_store, week]
+  sample: same rows as the confirmatory specification
+  purpose: show how the price coefficient moves as cross-sectional and common time variation is removed
+
+exploratory:
+  - price_coefficient split by the four manual price tiers
+  - price_coefficient on rows with SALE set versus rows with SALE blank, with the blank group labeled as not confirmed regular price
+  - per-ounce price after parsing SIZE, as a robustness regressor rather than the primary price
+  - store demographics as descriptive store profiles only; store fixed effects absorb them
+  - store-week customer counts as a possible bad control, not as an instrument and not in the confirmatory specification
+
+hypotheses_before_estimation:
+  - id: h1_negative_fe_slope
+    statement: confirmatory cereals beta on log unit price is negative
+    if_rejected: report the non-negative estimate; do not search specifications
+  - id: h2_ols_differs_from_fe
+    statement: pooled OLS beta differs from confirmatory beta on the same cereals log sample
+    sidedness: two-sided
+  - id: h3_oatmeal_same_sign
+    statement: oatmeal confirmatory beta has the same sign as cereals
+    if_rejected: report the disagreement as robustness evidence
+
+identification_audit:
+  status: rejected_for_main_specification
+  candidates_to_assess_later:
+    - name: hoch_dreze_purk_1994_study1
+      endogenous_variable: log unit price
+      required_before_use: store-category treatment assignment and week window for ready-to-eat cereals
+      current_evidence: published paper documents the experiment; public Kilts files reviewed in Phase 1 do not contain the assignment
+    - name: margin_derived_average_acquisition_cost
+      decision: rejected
+      reason: >
+        Manual says the cost concept is average acquisition cost. The constructed
+        cost is a function of retail price. In the cereals log sample, PROFIT
+        changes while truncated PRICE is fixed in 5.3 percent of UPC-store pairs.
+    - name: lagged_price
+      decision: do not adopt by default
+    - name: other_store_or_other_zone_price
+      decision: do not adopt by default
+      reason: one chain in one metropolitan area, with chainwide promotions
+    - name: price_tier
+      decision: descriptive heterogeneity only
+      reason: tiers are a chain pricing policy correlated with location and local competition
+  if_no_candidate_survives: report that causal identification was not established
+
+counterfactual_rules:
+  status: hypothetical_accounting_scenarios
+  objectives: [accounting_revenue, accounting_gross_profit]
+  support: price changes inside the historical within-upc-store range of unit price
+  scenarios: [base_estimate, adverse, favorable]
+  cost: reported margin is a scenario input, not measured marginal cost
+  competition: no equilibrium model; competitor prices were not in the files reviewed
+  language: simulated accounting changes, not realized business gains

@@ -1,0 +1,28 @@
+{
+  "empirical": false,
+  "kilts_rows": 0,
+  "designs": [
+    {
+      "design": "valid_excluded_instrument",
+      "empirical": false,
+      "n": 20000,
+      "true_price_coefficient": -1.4,
+      "estimated_price_coefficient": -1.4035153185273719,
+      "first_stage_coefficient": 0.8062276703357523,
+      "direct_instrument_effect_in_outcome": 0.0,
+      "recovers_the_price_coefficient": true,
+      "note": "Synthetic rows. The instrument shifts price and is excluded from the outcome."
+    },
+    {
+      "design": "instrument_shifts_demand_directly",
+      "empirical": false,
+      "n": 20000,
+      "true_price_coefficient": -1.4,
+      "estimated_price_coefficient": -0.651772503637244,
+      "first_stage_coefficient": 1.199615998420039,
+      "direct_instrument_effect_in_outcome": 0.9,
+      "recovers_the_price_coefficient": false,
+      "note": "Synthetic rows. The first stage is strong because the instrument shifts price, and the 2SLS slope is not the price coefficient because the instrument also shifts the outcome."
+    }
+  ]
+}

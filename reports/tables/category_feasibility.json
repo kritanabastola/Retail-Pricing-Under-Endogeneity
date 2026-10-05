@@ -1,0 +1,710 @@
+{
+  "categories": {
+    "canned_soup": {
+      "duplicate_upc_store_week_rows": 0,
+      "expected_week_max": 399,
+      "expected_week_min": 1,
+      "header": [
+        "STORE",
+        "UPC",
+        "WEEK",
+        "MOVE",
+        "QTY",
+        "PRICE",
+        "SALE",
+        "PROFIT",
+        "OK",
+        "PRICE_HEX",
+        "PROFIT_HEX"
+      ],
+      "hex_price_absdiff_gt_0.0001": 0,
+      "hex_price_absdiff_gt_half_cent": 0,
+      "hex_price_compared": 7011243,
+      "hex_profit_absdiff_gt_0.0001": 0,
+      "hex_profit_absdiff_gt_0.005": 0,
+      "hex_profit_compared": 7011243,
+      "log_sample_definition": "log_sample_rows count OK==1, PRICE>0, QTY>0, and MOVE>0. The count is a screen, not a fitted sample.",
+      "log_sample_rows": 5504494,
+      "log_sample_sale_coded_move_share": 0.23615425898462988,
+      "log_sample_sale_coded_row_share": 0.1268534401163849,
+      "log_sample_share_of_rows": 0.7850953104891671,
+      "max_week": 399,
+      "max_week_end": "1997-05-07",
+      "median_stores_per_attribute_upc_with_movement": 86.0,
+      "median_week_coverage_within_upc_span": 0.949874686716792,
+      "median_within_pair_log_unit_price_range": 0.4717225438328732,
+      "min_week": 1,
+      "min_week_start": "1989-09-14",
+      "missing_week_spans": [
+        {
+          "end": "1994-07-27",
+          "start": "1994-07-21",
+          "week": 254
+        },
+        {
+          "end": "1994-08-03",
+          "start": "1994-07-28",
+          "week": 255
+        },
+        {
+          "end": "1994-08-10",
+          "start": "1994-08-04",
+          "week": 256
+        },
+        {
+          "end": "1994-08-17",
+          "start": "1994-08-11",
+          "week": 257
+        },
+        {
+          "end": "1994-09-21",
+          "start": "1994-09-15",
+          "week": 262
+        },
+        {
+          "end": "1994-09-28",
+          "start": "1994-09-22",
+          "week": 263
+        },
+        {
+          "end": "1994-10-05",
+          "start": "1994-09-29",
+          "week": 264
+        },
+        {
+          "end": "1994-10-12",
+          "start": "1994-10-06",
+          "week": 265
+        },
+        {
+          "end": "1995-01-11",
+          "start": "1995-01-05",
+          "week": 278
+        },
+        {
+          "end": "1995-01-18",
+          "start": "1995-01-12",
+          "week": 279
+        },
+        {
+          "end": "1995-02-22",
+          "start": "1995-02-16",
+          "week": 284
+        },
+        {
+          "end": "1995-03-01",
+          "start": "1995-02-23",
+          "week": 285
+        },
+        {
+          "end": "1996-07-10",
+          "start": "1996-07-04",
+          "week": 356
+        },
+        {
+          "end": "1996-07-17",
+          "start": "1996-07-11",
+          "week": 357
+        },
+        {
+          "end": "1997-01-22",
+          "start": "1997-01-16",
+          "week": 384
+        },
+        {
+          "end": "1997-01-29",
+          "start": "1997-01-23",
+          "week": 385
+        },
+        {
+          "end": "1997-02-05",
+          "start": "1997-01-30",
+          "week": 386
+        },
+        {
+          "end": "1997-02-12",
+          "start": "1997-02-06",
+          "week": 387
+        },
+        {
+          "end": "1997-03-19",
+          "start": "1997-03-13",
+          "week": 392
+        },
+        {
+          "end": "1997-03-26",
+          "start": "1997-03-20",
+          "week": 393
+        }
+      ],
+      "missing_weeks_inside_manual_window": [
+        254,
+        255,
+        256,
+        257,
+        262,
+        263,
+        264,
+        265,
+        278,
+        279,
+        284,
+        285,
+        356,
+        357,
+        384,
+        385,
+        386,
+        387,
+        392,
+        393
+      ],
+      "month_move_max_over_min": 3.008281836723787,
+      "month_move_on_log_sample": {
+        "1": 12095408.0,
+        "10": 10997961.0,
+        "11": 12777277.0,
+        "12": 12423764.0,
+        "2": 10119085.0,
+        "3": 9447198.0,
+        "4": 7595340.0,
+        "5": 5693505.0,
+        "6": 4585183.0,
+        "7": 4247367.0,
+        "8": 5522414.0,
+        "9": 8477383.0
+      },
+      "move_negative": 0,
+      "move_positive": 5552769,
+      "move_zero": 1458474,
+      "movement_bytes": 43140921,
+      "movement_path_name": "wcso.zip",
+      "n_attribute_upcs_missing_from_movement": 0,
+      "n_movement_upcs_missing_from_attribute_file": 0,
+      "n_rows": 7011243,
+      "n_stores": 93,
+      "n_upc_store_pairs_in_log_sample": 32693,
+      "n_upcs_in_movement": 445,
+      "n_weeks": 379,
+      "ok_counts": {
+        "0": 148069,
+        "1": 6863174
+      },
+      "positive_move_nonpositive_price": 1085,
+      "price_missing": 0,
+      "price_negative": 0,
+      "price_nonpositive": 1459559,
+      "price_zero": 1459559,
+      "profit_missing": 0,
+      "profit_negative": 41806,
+      "profit_outside_minus100_to_100": 0,
+      "qty_nonpositive": 0,
+      "qty_value_counts_top": {
+        "1": 6960252,
+        "2": 34137,
+        "3": 11158,
+        "4": 1822,
+        "5": 3225,
+        "6": 649
+      },
+      "sale_counts": {
+        "(blank)": 6304540,
+        "B": 551165,
+        "C": 343,
+        "G": 2111,
+        "S": 153084
+      },
+      "screened_on": "2026-10-05",
+      "share_pairs_with_any_coded_sale": 0.9150276817667391,
+      "share_pairs_with_log_price_range_at_least_log_1_05": 0.9480839023190011,
+      "share_pairs_with_profit_variation_and_fixed_truncated_price": 0.01792432630838406,
+      "share_pairs_with_qty_variation": 0.242773682439666,
+      "share_pairs_with_truncated_price_variation": 0.9572997277704708,
+      "upc_bytes": 23870,
+      "upc_file": {
+        "commodity_codes": {
+          "324": 392,
+          "326": 53
+        },
+        "description_flags": {
+          "tilde_discontinued": 38
+        },
+        "header": [
+          "COM_CODE",
+          "UPC",
+          "DESCRIP",
+          "SIZE",
+          "CASE",
+          "NITEM"
+        ],
+        "n_rows": 445,
+        "n_unique_upc": 445,
+        "size_kinds": {
+          "other": 28,
+          "ounces_like": 417
+        }
+      },
+      "upc_path_name": "upccso.csv"
+    },
+    "cereals": {
+      "duplicate_upc_store_week_rows": 0,
+      "expected_week_max": 399,
+      "expected_week_min": 1,
+      "header": [
+        "STORE",
+        "UPC",
+        "WEEK",
+        "MOVE",
+        "QTY",
+        "PRICE",
+        "SALE",
+        "PROFIT",
+        "OK",
+        "PRICE_HEX",
+        "PROFIT_HEX"
+      ],
+      "hex_price_absdiff_gt_0.0001": 0,
+      "hex_price_absdiff_gt_half_cent": 0,
+      "hex_price_compared": 6602582,
+      "hex_profit_absdiff_gt_0.0001": 0,
+      "hex_profit_absdiff_gt_0.005": 0,
+      "hex_profit_compared": 6602582,
+      "log_sample_definition": "log_sample_rows count OK==1, PRICE>0, QTY>0, and MOVE>0. The count is a screen, not a fitted sample.",
+      "log_sample_rows": 4707776,
+      "log_sample_sale_coded_move_share": 0.2075754321168541,
+      "log_sample_sale_coded_row_share": 0.07348374264196088,
+      "log_sample_share_of_rows": 0.7130204516960184,
+      "max_week": 399,
+      "max_week_end": "1997-05-07",
+      "median_stores_per_attribute_upc_with_movement": 85.0,
+      "median_week_coverage_within_upc_span": 0.9197994987468672,
+      "median_within_pair_log_unit_price_range": 0.4098224134771201,
+      "min_week": 1,
+      "min_week_start": "1989-09-14",
+      "missing_week_spans": [
+        {
+          "end": "1994-09-21",
+          "start": "1994-09-15",
+          "week": 262
+        },
+        {
+          "end": "1994-09-28",
+          "start": "1994-09-22",
+          "week": 263
+        },
+        {
+          "end": "1994-10-05",
+          "start": "1994-09-29",
+          "week": 264
+        },
+        {
+          "end": "1994-10-12",
+          "start": "1994-10-06",
+          "week": 265
+        },
+        {
+          "end": "1995-02-22",
+          "start": "1995-02-16",
+          "week": 284
+        },
+        {
+          "end": "1995-03-01",
+          "start": "1995-02-23",
+          "week": 285
+        },
+        {
+          "end": "1995-03-08",
+          "start": "1995-03-02",
+          "week": 286
+        },
+        {
+          "end": "1995-03-15",
+          "start": "1995-03-09",
+          "week": 287
+        },
+        {
+          "end": "1995-03-22",
+          "start": "1995-03-16",
+          "week": 288
+        },
+        {
+          "end": "1995-03-29",
+          "start": "1995-03-23",
+          "week": 289
+        },
+        {
+          "end": "1995-04-05",
+          "start": "1995-03-30",
+          "week": 290
+        },
+        {
+          "end": "1995-04-12",
+          "start": "1995-04-06",
+          "week": 291
+        },
+        {
+          "end": "1995-04-19",
+          "start": "1995-04-13",
+          "week": 292
+        },
+        {
+          "end": "1995-04-26",
+          "start": "1995-04-20",
+          "week": 293
+        },
+        {
+          "end": "1995-05-03",
+          "start": "1995-04-27",
+          "week": 294
+        },
+        {
+          "end": "1995-05-10",
+          "start": "1995-05-04",
+          "week": 295
+        },
+        {
+          "end": "1995-05-17",
+          "start": "1995-05-11",
+          "week": 296
+        },
+        {
+          "end": "1995-05-24",
+          "start": "1995-05-18",
+          "week": 297
+        },
+        {
+          "end": "1995-05-31",
+          "start": "1995-05-25",
+          "week": 298
+        },
+        {
+          "end": "1995-06-07",
+          "start": "1995-06-01",
+          "week": 299
+        },
+        {
+          "end": "1995-06-14",
+          "start": "1995-06-08",
+          "week": 300
+        },
+        {
+          "end": "1995-06-21",
+          "start": "1995-06-15",
+          "week": 301
+        },
+        {
+          "end": "1995-06-28",
+          "start": "1995-06-22",
+          "week": 302
+        },
+        {
+          "end": "1995-07-05",
+          "start": "1995-06-29",
+          "week": 303
+        },
+        {
+          "end": "1995-07-12",
+          "start": "1995-07-06",
+          "week": 304
+        },
+        {
+          "end": "1995-07-19",
+          "start": "1995-07-13",
+          "week": 305
+        },
+        {
+          "end": "1995-07-26",
+          "start": "1995-07-20",
+          "week": 306
+        },
+        {
+          "end": "1995-08-02",
+          "start": "1995-07-27",
+          "week": 307
+        },
+        {
+          "end": "1995-08-09",
+          "start": "1995-08-03",
+          "week": 308
+        },
+        {
+          "end": "1995-08-16",
+          "start": "1995-08-10",
+          "week": 309
+        },
+        {
+          "end": "1996-10-16",
+          "start": "1996-10-10",
+          "week": 370
+        },
+        {
+          "end": "1996-10-23",
+          "start": "1996-10-17",
+          "week": 371
+        }
+      ],
+      "missing_weeks_inside_manual_window": [
+        262,
+        263,
+        264,
+        265,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297,
+        298,
+        299,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        370,
+        371
+      ],
+      "month_move_max_over_min": 1.430226101165972,
+      "month_move_on_log_sample": {
+        "1": 9081541.0,
+        "10": 7773319.0,
+        "11": 7835053.0,
+        "12": 7757053.0,
+        "2": 7792241.0,
+        "3": 7894885.0,
+        "4": 7622336.0,
+        "5": 6806007.0,
+        "6": 6349724.0,
+        "7": 6670017.0,
+        "8": 7624304.0,
+        "9": 7560461.0
+      },
+      "move_negative": 0,
+      "move_positive": 4751879,
+      "move_zero": 1850703,
+      "movement_bytes": 42402094,
+      "movement_path_name": "wcer.zip",
+      "n_attribute_upcs_missing_from_movement": 0,
+      "n_movement_upcs_missing_from_attribute_file": 0,
+      "n_rows": 6602582,
+      "n_stores": 93,
+      "n_upc_store_pairs_in_log_sample": 36443,
+      "n_upcs_in_movement": 490,
+      "n_weeks": 367,
+      "ok_counts": {
+        "0": 141285,
+        "1": 6461297
+      },
+      "positive_move_nonpositive_price": 677,
+      "price_missing": 0,
+      "price_negative": 0,
+      "price_nonpositive": 1851380,
+      "price_zero": 1851380,
+      "profit_missing": 0,
+      "profit_negative": 53057,
+      "profit_outside_minus100_to_100": 0,
+      "qty_nonpositive": 0,
+      "qty_value_counts_top": {
+        "1": 6597548,
+        "2": 3300,
+        "3": 570,
+        "4": 1164
+      },
+      "sale_counts": {
+        "(blank)": 6242568,
+        "B": 254261,
+        "C": 3418,
+        "G": 11075,
+        "L": 1,
+        "S": 91259
+      },
+      "screened_on": "2026-10-05",
+      "share_pairs_with_any_coded_sale": 0.7798479817797657,
+      "share_pairs_with_log_price_range_at_least_log_1_05": 0.8272478956463571,
+      "share_pairs_with_profit_variation_and_fixed_truncated_price": 0.052630134730949706,
+      "share_pairs_with_qty_variation": 0.03874543808138737,
+      "share_pairs_with_truncated_price_variation": 0.8552259693219548,
+      "upc_bytes": 25932,
+      "upc_file": {
+        "commodity_codes": {
+          "311": 490
+        },
+        "description_flags": {
+          "dollar_prefix_no_manual_meaning": 6,
+          "tilde_discontinued": 36
+        },
+        "header": [
+          "COM_CODE",
+          "UPC",
+          "DESCRIP",
+          "SIZE",
+          "CASE",
+          "NITEM"
+        ],
+        "n_rows": 490,
+        "n_unique_upc": 490,
+        "size_kinds": {
+          "other": 22,
+          "ounces_like": 465,
+          "unparsed": 3
+        }
+      },
+      "upc_path_name": "upccer.csv"
+    },
+    "oatmeal": {
+      "duplicate_upc_store_week_rows": 0,
+      "expected_week_max": 399,
+      "expected_week_min": 91,
+      "header": [
+        "STORE",
+        "UPC",
+        "WEEK",
+        "MOVE",
+        "QTY",
+        "PRICE",
+        "SALE",
+        "PROFIT",
+        "OK",
+        "PRICE_HEX",
+        "PROFIT_HEX"
+      ],
+      "hex_price_absdiff_gt_0.0001": 0,
+      "hex_price_absdiff_gt_half_cent": 0,
+      "hex_price_compared": 1333465,
+      "hex_profit_absdiff_gt_0.0001": 0,
+      "hex_profit_absdiff_gt_0.005": 0,
+      "hex_profit_compared": 1333465,
+      "log_sample_definition": "log_sample_rows count OK==1, PRICE>0, QTY>0, and MOVE>0. The count is a screen, not a fitted sample.",
+      "log_sample_rows": 981037,
+      "log_sample_sale_coded_move_share": 0.21198510118719693,
+      "log_sample_sale_coded_row_share": 0.09885050207076797,
+      "log_sample_share_of_rows": 0.7357050991214618,
+      "max_week": 399,
+      "max_week_end": "1997-05-07",
+      "median_stores_per_attribute_upc_with_movement": 85.0,
+      "median_week_coverage_within_upc_span": 0.9902912621359223,
+      "median_within_pair_log_unit_price_range": 0.3240924361476212,
+      "min_week": 91,
+      "min_week_start": "1991-06-06",
+      "missing_week_spans": [
+        {
+          "end": "1992-08-05",
+          "start": "1992-07-30",
+          "week": 151
+        },
+        {
+          "end": "1996-10-16",
+          "start": "1996-10-10",
+          "week": 370
+        },
+        {
+          "end": "1996-10-23",
+          "start": "1996-10-17",
+          "week": 371
+        }
+      ],
+      "missing_weeks_inside_manual_window": [
+        151,
+        370,
+        371
+      ],
+      "month_move_max_over_min": 2.8950658405821468,
+      "month_move_on_log_sample": {
+        "1": 1360238.0,
+        "10": 1010283.0,
+        "11": 917995.0,
+        "12": 1226561.0,
+        "2": 1098158.0,
+        "3": 830239.0,
+        "4": 647145.0,
+        "5": 483049.0,
+        "6": 508986.0,
+        "7": 469847.0,
+        "8": 570219.0,
+        "9": 1051245.0
+      },
+      "move_negative": 0,
+      "move_positive": 981321,
+      "move_zero": 352144,
+      "movement_bytes": 7736663,
+      "movement_path_name": "woat.zip",
+      "n_attribute_upcs_missing_from_movement": 0,
+      "n_movement_upcs_missing_from_attribute_file": 0,
+      "n_rows": 1333465,
+      "n_stores": 93,
+      "n_upc_store_pairs_in_log_sample": 7444,
+      "n_upcs_in_movement": 96,
+      "n_weeks": 306,
+      "ok_counts": {
+        "0": 5081,
+        "1": 1328384
+      },
+      "positive_move_nonpositive_price": 58,
+      "price_missing": 0,
+      "price_negative": 0,
+      "price_nonpositive": 352202,
+      "price_zero": 352202,
+      "profit_missing": 0,
+      "profit_negative": 8017,
+      "profit_outside_minus100_to_100": 0,
+      "qty_nonpositive": 0,
+      "qty_value_counts_top": {
+        "1": 1332879,
+        "2": 382,
+        "3": 204
+      },
+      "sale_counts": {
+        "(blank)": 1229568,
+        "B": 75695,
+        "G": 6759,
+        "S": 21443
+      },
+      "screened_on": "2026-10-05",
+      "share_pairs_with_any_coded_sale": 0.738312735088662,
+      "share_pairs_with_log_price_range_at_least_log_1_05": 0.8216172287687932,
+      "share_pairs_with_profit_variation_and_fixed_truncated_price": 0.03815153143471252,
+      "share_pairs_with_qty_variation": 0.06125738850080602,
+      "share_pairs_with_truncated_price_variation": 0.858543793659323,
+      "upc_bytes": 5161,
+      "upc_file": {
+        "commodity_codes": {
+          "310": 96
+        },
+        "description_flags": {
+          "dollar_prefix_no_manual_meaning": 1,
+          "tilde_discontinued": 9
+        },
+        "header": [
+          "COM_CODE",
+          "UPC",
+          "DESCRIP",
+          "SIZE",
+          "CASE",
+          "NITEM"
+        ],
+        "n_rows": 96,
+        "n_unique_upc": 96,
+        "size_kinds": {
+          "other": 1,
+          "ounces_like": 95
+        }
+      },
+      "upc_path_name": "upcoat.csv"
+    }
+  },
+  "purpose": "Phase 1 feasibility counts. Not elasticities and not a regression sample.",
+  "source": "Kilts Center Dominick's CSV files profiled locally. Raw files are gitignored."
+}

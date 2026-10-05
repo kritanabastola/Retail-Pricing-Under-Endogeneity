@@ -1,0 +1,42 @@
+[
+  {
+    "figure_id": "baseline_01_coefficients",
+    "path": "reports/figures/baseline_01_coefficients.png",
+    "title": "Log-log price association by specification",
+    "sample": "cereals log sample, except rows whose model_id says otherwise",
+    "n_rows": 4707776,
+    "units": "log item movement per log dollar of unit price",
+    "definition": "Store-clustered 95 percent t intervals. PPML rows, when present, are elasticities of the conditional mean. None of the intervals is a causal effect.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "baseline_02_absorbed_price_variation",
+    "path": "reports/figures/baseline_02_absorbed_price_variation.png",
+    "title": "Price variation left for the coefficient",
+    "sample": "cereals log sample",
+    "n_rows": 4707776,
+    "units": "share of variance",
+    "definition": "One minus the share absorbed by the fixed effects named in the model. Computed before the slope is used. A share near zero would mean the fixed effects had removed the price variation.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "baseline_03_confirmatory_residuals",
+    "path": "reports/figures/baseline_03_confirmatory_residuals.png",
+    "title": "Confirmatory residuals",
+    "sample": "cereals log sample, M5 pair and week fixed effects",
+    "n_rows": 4707776,
+    "units": "log item movement",
+    "definition": "Outcome residual after pair effects, week effects, log unit price, and the coded promotion indicator. The shape is descriptive.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "baseline_04_binned_residuals",
+    "path": "reports/figures/baseline_04_binned_residuals.png",
+    "title": "Confirmatory residual by price bin",
+    "sample": "cereals log sample, M5 residualized regressors",
+    "n_rows": 4707776,
+    "units": "log item movement",
+    "definition": "20 quantile bins of log unit price after pair and week effects. Point sizes are not scaled. Bin counts are 235389, 235389, 235389, 235388, 235389, 235389, 235389, 235388, 235389, 235389, 235389, 235389, 235388, 235389, 235389, 235388, 235389, 235389, 235389, 235389. A bend would show that the log-log line is a summary, not a literal curve.",
+    "causal_claim": false
+  }
+]

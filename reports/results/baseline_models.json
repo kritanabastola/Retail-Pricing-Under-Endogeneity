@@ -1,0 +1,528 @@
+{
+  "generated_by": "python -m pricing_research.estimation.run",
+  "category": "cereals",
+  "causal_claim": false,
+  "dataset": {
+    "log_sample": "data/processed/cereals_log_sample.parquet",
+    "sha256": "023bd0b03df848a782b8bfab3b2ddce418543b08202736047ea418f923b4b4fb",
+    "rows": 4707776,
+    "stores": 93,
+    "upcs": 489,
+    "weeks": 366,
+    "audited_rows": 6602582
+  },
+  "estimand": {
+    "outcome": "natural log of MOVE, item movement",
+    "price": "natural log of PRICE / QTY, dollars per item",
+    "beta": "conditional log-log association. A 10 percent price difference maps through exp(beta * log(1.10)) - 1. Not a causal elasticity.",
+    "promotion": "1{SALE in {B, C, S}}. Blank, G, and L stay in the reference group.",
+    "cluster_primary": "store",
+    "cluster_sensitivity": [
+      "week",
+      "store and week"
+    ],
+    "interval": "Student t with store clusters minus 1 degree of freedom",
+    "not_included": [
+      "upc by week",
+      "store by week",
+      "log(1 + MOVE)",
+      "instruments"
+    ]
+  },
+  "pair_price_screen": {
+    "pairs": 36443,
+    "pairs_with_unit_price_change": 31167,
+    "share_with_unit_price_change": 0.8552259693219548,
+    "tolerance_dollars": 0.001,
+    "within_pair_reading_allowed": true,
+    "floor": 0.2
+  },
+  "absorbed_variation_before_slopes": [
+    {
+      "model_id": "M0_pooled_ols",
+      "absorb": [],
+      "seconds": 0.006317833001958206,
+      "log_unit_price_ss_share_remaining": 1.0,
+      "regressor_ss_share_remaining": {
+        "log_unit_price": 1.0
+      },
+      "fitted_after_this_check": true
+    },
+    {
+      "model_id": "M1_pooled_promotion",
+      "absorb": [],
+      "seconds": 0.009811875002924353,
+      "log_unit_price_ss_share_remaining": 1.0,
+      "regressor_ss_share_remaining": {
+        "log_unit_price": 1.0,
+        "promo_coded": 1.0
+      },
+      "fitted_after_this_check": true
+    },
+    {
+      "model_id": "M2_upc",
+      "absorb": [
+        "upc"
+      ],
+      "seconds": 0.11584183300146833,
+      "log_unit_price_ss_share_remaining": 0.167903650768411,
+      "regressor_ss_share_remaining": {
+        "log_unit_price": 0.167903650768411
+      },
+      "fitted_after_this_check": true
+    },
+    {
+      "model_id": "M2_upc_and_store",
+      "absorb": [
+        "upc",
+        "store"
+      ],
+      "seconds": 0.665949082991574,
+      "log_unit_price_ss_share_remaining": 0.1620078018380335,
+      "regressor_ss_share_remaining": {
+        "log_unit_price": 0.1620078018380335
+      },
+      "fitted_after_this_check": true
+    },
+    {
+      "model_id": "M3_pair",
+      "absorb": [
+        "pair"
+      ],
+      "seconds": 0.11886454198975116,
+      "log_unit_price_ss_share_remaining": 0.15829572892030336,
+      "regressor_ss_share_remaining": {
+        "log_unit_price": 0.15829572892030336
+      },
+      "fitted_after_this_check": true
+    },
+    {
+      "model_id": "M3_pair_week",
+      "absorb": [
+        "pair",
+        "week"
+      ],
+      "seconds": 1.5341671670030337,
+      "log_unit_price_ss_share_remaining": 0.11508273436977523,
+      "regressor_ss_share_remaining": {
+        "log_unit_price": 0.11508273436977523
+      },
+      "fitted_after_this_check": true
+    },
+    {
+      "model_id": "M4_pair_month",
+      "absorb": [
+        "pair",
+        "month"
+      ],
+      "seconds": 0.6866185420076363,
+      "log_unit_price_ss_share_remaining": 0.15783901695857191,
+      "regressor_ss_share_remaining": {
+        "log_unit_price": 0.15783901695857191
+      },
+      "fitted_after_this_check": true
+    },
+    {
+      "model_id": "M4_pair_year_month",
+      "absorb": [
+        "pair",
+        "year_month"
+      ],
+      "seconds": 1.7221115420106798,
+      "log_unit_price_ss_share_remaining": 0.1167421781906107,
+      "regressor_ss_share_remaining": {
+        "log_unit_price": 0.1167421781906107
+      },
+      "fitted_after_this_check": true
+    },
+    {
+      "model_id": "M5_confirmatory",
+      "absorb": [
+        "pair",
+        "week"
+      ],
+      "seconds": 2.84155945898965,
+      "log_unit_price_ss_share_remaining": 0.11508273436977523,
+      "regressor_ss_share_remaining": {
+        "log_unit_price": 0.11508273436977523,
+        "promo_coded": 0.892464406110272
+      },
+      "fitted_after_this_check": true
+    }
+  ],
+  "price_variation_after_promotion_control": {
+    "share_remaining_after_pair_week_and_promo": 0.09171835482538673,
+    "projection_iterations": 19.0
+  },
+  "models": [
+    {
+      "model_id": "M0_pooled_ols",
+      "role": "descriptive pooled OLS",
+      "confirmatory": false,
+      "formula": "log_move ~ log_unit_price",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 0,
+      "fe_rank_note": "No fixed effects.",
+      "seconds": 0.5058900410076603,
+      "projection": {
+        "iterations": 0,
+        "converged": true,
+        "max_abs_change": 0.0
+      },
+      "r_squared": 0.01242586992168948,
+      "within_r_squared": 0.01242586992168948,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false
+    },
+    {
+      "model_id": "M1_pooled_promotion",
+      "role": "pooled OLS with the incomplete promotion indicator",
+      "confirmatory": false,
+      "formula": "log_move ~ log_unit_price + promo_coded",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 0,
+      "fe_rank_note": "No fixed effects.",
+      "seconds": 0.6568253750156146,
+      "projection": {
+        "iterations": 0,
+        "converged": true,
+        "max_abs_change": 0.0
+      },
+      "r_squared": 0.04872875632137352,
+      "within_r_squared": 0.04872875632137352,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false
+    },
+    {
+      "model_id": "M2_upc",
+      "role": "product fixed effects",
+      "confirmatory": false,
+      "formula": "log_move ~ log_unit_price | upc",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 489,
+      "fe_rank_note": "One-way rank equals the number of groups.",
+      "seconds": 0.515469166013645,
+      "projection": {
+        "iterations": 1,
+        "converged": true,
+        "max_abs_change": 0.0
+      },
+      "r_squared": 0.3935853894832021,
+      "within_r_squared": 0.13095751379971265,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false
+    },
+    {
+      "model_id": "M2_upc_and_store",
+      "role": "additive product and store fixed effects",
+      "confirmatory": false,
+      "formula": "log_move ~ log_unit_price | upc + store",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 581,
+      "fe_rank_note": "Two-way rank is n1 + n2 - 1 and assumes those two factors form a connected graph.",
+      "seconds": 2.0291972499981057,
+      "projection": {
+        "iterations": 7,
+        "converged": true,
+        "max_abs_change": 2.1229435986924727e-09
+      },
+      "r_squared": 0.49734084377770316,
+      "within_r_squared": 0.160605483290584,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false
+    },
+    {
+      "model_id": "M3_pair",
+      "role": "store-product pair fixed effects",
+      "confirmatory": false,
+      "formula": "log_move ~ log_unit_price | pair",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 36443,
+      "fe_rank_note": "One-way rank equals the number of groups.",
+      "seconds": 0.5283727080095559,
+      "projection": {
+        "iterations": 1,
+        "converged": true,
+        "max_abs_change": 0.0
+      },
+      "r_squared": 0.6001051569040721,
+      "within_r_squared": 0.19404525880861212,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false
+    },
+    {
+      "model_id": "M3_pair_week",
+      "role": "pair and week fixed effects, promotion not partialled",
+      "confirmatory": false,
+      "formula": "log_move ~ log_unit_price | pair + week",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 36808,
+      "fe_rank_note": "Two-way rank is n1 + n2 - 1 and assumes those two factors form a connected graph.",
+      "seconds": 4.2282114579866175,
+      "projection": {
+        "iterations": 20,
+        "converged": true,
+        "max_abs_change": 8.72964797671294e-09
+      },
+      "r_squared": 0.6166110337018884,
+      "within_r_squared": 0.17710260607155304,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false
+    },
+    {
+      "model_id": "M4_pair_month",
+      "role": "pair effects with calendar-month seasonality",
+      "confirmatory": false,
+      "formula": "log_move ~ log_unit_price | pair + month",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 36454,
+      "fe_rank_note": "Two-way rank is n1 + n2 - 1 and assumes those two factors form a connected graph.",
+      "seconds": 1.988515125005506,
+      "projection": {
+        "iterations": 7,
+        "converged": true,
+        "max_abs_change": 3.2873326283322513e-10
+      },
+      "r_squared": 0.6019568318416917,
+      "within_r_squared": 0.19342310500795035,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false
+    },
+    {
+      "model_id": "M4_pair_year_month",
+      "role": "pair effects with year-month time effects",
+      "confirmatory": false,
+      "formula": "log_move ~ log_unit_price | pair + year_month",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 36530,
+      "fe_rank_note": "Two-way rank is n1 + n2 - 1 and assumes those two factors form a connected graph.",
+      "seconds": 4.745679540996207,
+      "projection": {
+        "iterations": 20,
+        "converged": true,
+        "max_abs_change": 8.343512325481584e-09
+      },
+      "r_squared": 0.6111791531812866,
+      "within_r_squared": 0.17454838574573495,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false
+    },
+    {
+      "model_id": "M5_confirmatory",
+      "role": "pre-specified confirmatory association",
+      "confirmatory": true,
+      "formula": "log_move ~ log_unit_price + promo_coded | pair + week",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 36808,
+      "fe_rank_note": "Two-way rank is n1 + n2 - 1 and assumes those two factors form a connected graph.",
+      "seconds": 5.8251714160142,
+      "projection": {
+        "iterations": 20,
+        "converged": true,
+        "max_abs_change": 8.72964797671294e-09
+      },
+      "r_squared": 0.6283765057373233,
+      "within_r_squared": 0.20235574877355023,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false
+    }
+  ],
+  "selection": {
+    "counts": {
+      "audited_rows": 6602582,
+      "in_log_sample_rows": 4707776,
+      "move_not_positive": 1850703,
+      "move_not_positive_and_price_not_positive": 1850703,
+      "ok1_positive_price_zero_move": 0,
+      "positive_move_nonpositive_price": 677,
+      "ok_not_one_positive_price_and_move": 43426
+    },
+    "zero_sales_and_log_price": "A zero-movement row can enter a log-price regression only when its unit price is positive. ok1_positive_price_zero_move is that count.",
+    "log_one_plus_move": "not estimated; those coefficients would not be exact elasticities",
+    "level": {
+      "model_id": "L_level_pair_week",
+      "role": "level movement on unit price, pair and week effects",
+      "confirmatory": false,
+      "formula": "move ~ unit_price | pair + week",
+      "estimator": "within_ols",
+      "sample": "log",
+      "n": 4707776,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 36808,
+      "fe_rank_note": "Two-way rank is n1 + n2 - 1 and assumes those two factors form a connected graph.",
+      "seconds": 4.712965209007962,
+      "projection": {
+        "iterations": 22,
+        "converged": true,
+        "max_abs_change": 9.426402769463493e-09
+      },
+      "r_squared": 0.21462871067534361,
+      "within_r_squared": 0.12155476241094065,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false,
+      "translation_at_median": {
+        "median_unit_price_dollars": 3.15,
+        "median_move_items": 13.0,
+        "implied_elasticity": -12.792643143914663,
+        "meaning": "Linear items-per-dollar coefficient times median price over median movement. This is not the log-log estimand and not a causal elasticity."
+      }
+    },
+    "ppml": [
+      {
+        "model_id": "P_ppml_pooled",
+        "formula": "move ~ log_unit_price",
+        "iterations": 6,
+        "converged": true,
+        "seconds": 1.8601618750253692,
+        "includes_fixed_effects": false,
+        "n": 4707776,
+        "note": "Elasticity of the conditional mean on the rows passed in. Not an elasticity of log(1 + movement), and not causal."
+      },
+      {
+        "model_id": "P_ppml_pair",
+        "formula": "move ~ log_unit_price | pair",
+        "iterations": 6,
+        "converged": true,
+        "seconds": 1.5711206249834504,
+        "includes_fixed_effects": true,
+        "n": 4707776,
+        "note": "Elasticity of the conditional mean on the rows passed in. Not an elasticity of log(1 + movement), and not causal."
+      }
+    ],
+    "restore_ok0": {
+      "model_id": "S_restore_ok0",
+      "role": "confirmatory association with OK=0 positive-sale rows restored",
+      "confirmatory": false,
+      "formula": "log_move ~ log_unit_price + promo_coded | pair + week",
+      "estimator": "within_ols",
+      "sample": "log_plus_ok0_positive",
+      "n": 4751202,
+      "store_clusters": 93,
+      "week_clusters": 366,
+      "fe_rank_assumed": 36859,
+      "fe_rank_note": "Two-way rank is n1 + n2 - 1 and assumes those two factors form a connected graph.",
+      "seconds": 5.635529958002735,
+      "projection": {
+        "iterations": 20,
+        "converged": true,
+        "max_abs_change": 8.828465070109814e-09
+      },
+      "r_squared": 0.6192869405274115,
+      "within_r_squared": 0.19550757729483725,
+      "twoway_variance_usable": true,
+      "causal_claim": false,
+      "chosen_by_r_squared": false,
+      "extra_rows": 43426,
+      "sign_matches_confirmatory": true,
+      "replaces_confirmatory": false
+    }
+  },
+  "hypotheses": {
+    "h1_negative_confirmatory_slope": {
+      "statement": "confirmatory cereals beta on log unit price is negative",
+      "estimate": -2.127546339203591,
+      "sign_is_negative": true,
+      "one_sided_p_against_zero": 6.31947070376393e-88,
+      "causal_claim": false
+    },
+    "h2_pooled_differs_from_confirmatory": {
+      "statement": "pooled OLS beta differs from confirmatory beta on the same rows",
+      "sidedness": "two-sided",
+      "test": {
+        "gap": 1.7815128511503202,
+        "standard_error": 0.02581766043332865,
+        "t": 69.00365181232772,
+        "p_two_sided": 4.996024964255169e-81,
+        "degrees_of_freedom": 92.0,
+        "hausman_exogeneity_test": false
+      },
+      "not_a_hausman_exogeneity_test": true
+    },
+    "h3_oatmeal_same_sign": {
+      "status": "not_estimated",
+      "reason": "Oatmeal is the robustness category and is outside this cereals baseline."
+    }
+  },
+  "diagnostics": {
+    "successive_within_pair_residual_correlation": 0.30968148673722523,
+    "residual_sd": 0.556627191466134,
+    "residual_skewness": -0.31534570371603693,
+    "residual_quantiles": {
+      "0.01": -1.6336315357651843,
+      "0.05": -0.9292608232894926,
+      "0.25": -0.28730174412357096,
+      "0.5": 0.03159073607689444,
+      "0.75": 0.32299093452978345,
+      "0.95": 0.7944890135571026,
+      "0.99": 1.3631212406581235
+    },
+    "cook_p99": 1.0928048861648303e-05,
+    "cook_p999": 5.5498468610356997e-05,
+    "cook_max": 0.03871436012587415,
+    "rows_with_abs_studentized_residual_above_4": 21353,
+    "influence_refit": {
+      "rule": "drop rows above the 99.9 percentile of Cook's distance; diagnostic only",
+      "rows_dropped": 4708,
+      "rows_kept": 4703068,
+      "log_unit_price": -2.118061777259105,
+      "full_sample_log_unit_price": -2.127546339203591,
+      "replaces_confirmatory": false
+    }
+  },
+  "inference_limits": {
+    "store_clusters": 93,
+    "week_clusters": 366,
+    "store_cluster_covers": "arbitrary dependence among products and weeks inside a store",
+    "store_cluster_misses": "correlation across stores, including a UPC-specific shock that hits many stores in the same week",
+    "week_cluster_covers": "arbitrary dependence across products and stores inside a week",
+    "week_cluster_misses": "dependence across weeks inside a store",
+    "two_way": "Cameron-Gelbach-Miller store plus week minus the intersection. The matrix is discarded when it is not positive semidefinite. It is a sensitivity, not a proof of exogeneity."
+  }
+}

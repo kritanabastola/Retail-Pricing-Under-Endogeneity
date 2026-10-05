@@ -1,0 +1,122 @@
+[
+  {
+    "figure_id": "01_unit_price_distribution",
+    "path": "reports/figures/01_unit_price_distribution.png",
+    "title": "Distribution of unit price",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 4707776,
+    "units": "dollars per item",
+    "definition": "PRICE / QTY on the log sample. The histogram omits the top 1 percent of rows.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "02_log_movement_distribution",
+    "path": "reports/figures/02_log_movement_distribution.png",
+    "title": "Distribution of log item movement",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 4707776,
+    "units": "natural log of items",
+    "definition": "log(MOVE) where MOVE > 0. Zero recorded movement is excluded.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "03_price_volume",
+    "path": "reports/figures/03_price_volume.png",
+    "title": "Log price and log movement",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 4707776,
+    "units": "natural log of dollars per item and natural log of items",
+    "definition": "Hex density uses 200,000 rows drawn with seed 20261005. Bin means use all 4,707,776 rows. The within panel subtracts UPC-store means only.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "04_product_trend",
+    "path": "reports/figures/04_product_trend.png",
+    "title": "Weekly movement and median price, UPC 1600066610",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 29679,
+    "units": "items per week across stores; dollars per item",
+    "definition": "UPC with the largest total MOVE. Price is the weekly median across stores.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "05_store_price_position",
+    "path": "reports/figures/05_store_price_position.png",
+    "title": "Within-product store price position",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 4707776,
+    "units": "log points relative to the UPC mean",
+    "definition": "For each row, subtract the UPC's mean log unit price. Average those residuals by store. Tiers come from the store codebook; seven stores are unlabeled.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "06_promotion_movement",
+    "path": "reports/figures/06_promotion_movement.png",
+    "title": "Movement by promotion code",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 4707776,
+    "units": "natural log of items",
+    "definition": "Blank is not a confirmed regular price. Coupon weeks are few. Unclassified G and L codes are omitted from the bars.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "07_within_pair_price_range",
+    "path": "reports/figures/07_within_pair_price_range.png",
+    "title": "Within UPC-store range of log unit price",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 35878,
+    "units": "difference in natural log of dollars per item",
+    "definition": "Pairs with one week are excluded because a range is undefined.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "08_seasonal_movement",
+    "path": "reports/figures/08_seasonal_movement.png",
+    "title": "Mean recorded item movement by month",
+    "sample": "cereals audited movement rows, including recorded zeros",
+    "n_rows": 6602582,
+    "units": "items per observed store-UPC-week",
+    "definition": "Month is the month of the Thursday that opens the Dominick's week. The mean gives each observed row equal weight, so a missing year does not shrink a month's bar by itself.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "09_panel_coverage",
+    "path": "reports/figures/09_panel_coverage.png",
+    "title": "Panel coverage",
+    "sample": "cereals audited movement rows, including recorded zeros; coverage uses UPCs that appear in the log sample",
+    "n_rows": 6602582,
+    "units": "rows; share of category weeks inside each UPC span",
+    "definition": "The left panel is zero in weeks absent from the file. The coverage denominator excludes those category-wide missing weeks.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "10_revenue_concentration",
+    "path": "reports/figures/10_revenue_concentration.png",
+    "title": "Concentration of gross sales across UPCs",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 4707776,
+    "units": "share of UPCs and share of dollars",
+    "definition": "Lorenz curve of UPC totals of PRICE \u00d7 MOVE / QTY on the log sample.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "11_cross_store_price_range",
+    "path": "reports/figures/11_cross_store_price_range.png",
+    "title": "Cross-store range of unit price in the same UPC-week",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 65152,
+    "units": "dollars per item",
+    "definition": "A range near zero means the observed stores posted the same unit price that week.",
+    "causal_claim": false
+  },
+  {
+    "figure_id": "12_product_volume_and_price",
+    "path": "reports/figures/12_product_volume_and_price.png",
+    "title": "Product volume and average log unit price",
+    "sample": "cereals log sample: OK = 1, positive price, quantity, and movement",
+    "n_rows": 4707776,
+    "units": "natural log of dollars per item; natural log of total items",
+    "definition": "Unweighted mean of log unit price against the log of the UPC's total MOVE.",
+    "causal_claim": false
+  }
+]

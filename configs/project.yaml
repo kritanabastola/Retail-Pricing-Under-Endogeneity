@@ -1,0 +1,44 @@
+project_name: Retail Pricing Under Endogeneity
+student: Kritana Bastola
+institution: University of South Florida
+phase: 1
+status: design_complete_awaiting_permission_for_phase_2
+
+research_question: >
+  How does retail demand respond to product price changes across stores and
+  product categories, and under what assumptions can this relationship support
+  defensible counterfactual pricing decisions?
+
+primary_category:
+  name: ready-to-eat cereals
+  acronym: cer
+  movement_file: wcer
+  upc_file: upccer
+  manual_weeks: [1, 399]
+  manual_upc_count: 490
+  manual_observation_count: 6417055
+
+robustness_category:
+  name: oatmeal
+  acronym: oat
+  movement_file: woat
+  upc_file: upcoat
+  manual_weeks: [91, 399]
+  manual_upc_count: 96
+  manual_observation_count: 1301870
+  role: >
+    Secondary category for a later robustness pass. Not part of the
+    confirmatory cereals sample.
+
+deferred_category:
+  name: canned soup
+  acronym: cso
+  reason: >
+    The manual's bundle example is tomato soup, so QTY not equal to 1 may be
+    more common than in cereals. The public CSV zip is about the same size as
+    cereals, so soup is a later extension rather than the first robustness file.
+
+claim_level: >
+  Phase 1 adopts no causal elasticity. The confirmatory target is a conditional
+  association from a pre-specified fixed-effects regression. Counterfactuals,
+  when they are computed in a later phase, are accounting scenarios.

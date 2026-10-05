@@ -1,0 +1,9 @@
+record_type,rule,rows,rows_remaining,share_of_input
+input,movement_data_rows,6602582,6602582,1.0
+sequential_exclusion,duplicate_upc_store_week,0,6602582,0.0
+sequential_exclusion,ok_not_one,141285,6461297,0.021398446850035335
+sequential_exclusion,price_not_positive,1753521,4707776,0.26558110145394637
+sequential_exclusion,qty_not_positive,0,4707776,0.0
+sequential_exclusion,move_not_positive,0,4707776,0.0
+sequential_exclusion,week_outside_published_calendar,0,4707776,0.0
+output,log_sample,4707776,4707776,0.7130204516960184

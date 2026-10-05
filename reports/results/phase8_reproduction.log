@@ -1,0 +1,86 @@
+=== interpreter ===
+Python 3.13.1
+=== acquire existing cereals ===
+INFO Using existing data/raw/wcer.zip
+INFO Using existing data/raw/upccer.csv
+cereals	data/raw/wcer.zip	42402094	2d4a59f88e4b97257c566f7c62fcccfdf9d5971891a617316ab21ea61c8d24c2
+cereals	data/raw/upccer.csv	25932	affa589f080ab18a2edb2fa8f4cfb52b9212dec353bb49778e57f2b2403c5c6c
+=== acquire fresh copy ===
+INFO Downloading https://www.chicagobooth.edu/research/kilts/research-data/-/media/enterprise/centers/kilts/datasets/dominicks-dataset/movement_csv-files/wcer.zip
+=== fresh movement download ===
+curl exit 28 after 45s; 589479 of 42402094 bytes on the first attempt. Not a complete file.
+=== fresh upc download ===
+upccer.csv downloaded in one response, 25932 bytes, hash matches local file (checked separately).
+=== build ===
+INFO Using existing data/raw/wcer.zip
+INFO Using existing data/raw/upccer.csv
+INFO Finding duplicate keys in wcer.zip
+INFO Keyed 1000000 movement rows
+INFO Keyed 2000000 movement rows
+INFO Keyed 3000000 movement rows
+INFO Keyed 4000000 movement rows
+INFO Keyed 5000000 movement rows
+INFO Keyed 6000000 movement rows
+INFO Wrote 1000000 audited rows
+INFO Wrote 2000000 audited rows
+INFO Wrote 3000000 audited rows
+INFO Wrote 4000000 audited rows
+INFO Wrote 5000000 audited rows
+INFO Wrote 6000000 audited rows
+INFO Audited 6602582 rows; log sample 4707776 rows
+=== explore ===
+INFO Reading audited movement columns
+INFO Reading the log sample
+INFO Summarizing panel structure
+INFO Measuring cross-store prices and price changes
+INFO Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+INFO Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+INFO Wrote 12 figures
+=== estimate ===
+INFO Measuring absorbed price variation before the slopes.
+INFO Fitting M0_pooled_ols.
+INFO Fitting M1_pooled_promotion.
+INFO Fitting M2_upc.
+INFO Fitting M2_upc_and_store.
+INFO Fitting M3_pair.
+INFO Fitting M3_pair_week.
+INFO Fitting M4_pair_month.
+INFO Fitting M4_pair_year_month.
+INFO Fitting M5_confirmatory.
+INFO Fitting the level specification.
+INFO Fitting P_ppml_pooled.
+INFO Fitting P_ppml_pair.
+INFO Fitting the OK=0 sign check on 43426 extra rows.
+INFO Wrote /Users/kritanabastola/Documents/Projects/retail-pricing-econometrics/reports/results/baseline_models.json.
+=== identify ===
+INFO Measuring instrument correlations. Verdicts stay at their pre-set values.
+INFO Robustness fit R_promo_includes_unclassified on 4707776 rows.
+INFO Robustness fit R_blank_sale_only on 4350772 rows.
+INFO Robustness fit R_coded_sale_only on 345945 rows.
+INFO Robustness fit R_discontinued_upc on 257674 rows.
+INFO Robustness fit R_not_discontinued_upc on 4450102 rows.
+INFO Robustness fit R_high_tier_stores on 1357188 rows.
+INFO Robustness fit R_cubfighter_stores on 517634 rows.
+INFO Robustness fit R_weeks_1_through_200 on 2528421 rows.
+INFO Robustness fit R_weeks_201_through_399 on 2179355 rows.
+INFO Robustness fit R_adjacent_price_lead on 4509599 rows.
+INFO Robustness fit R_pairs_with_a_price_change on 4634526 rows.
+INFO Wrote /Users/kritanabastola/Documents/Projects/retail-pricing-econometrics/reports/results/identification_audit.json.
+=== scenarios ===
+INFO Building one baseline shelf per UPC-store pair.
+INFO Evaluating price menus on 36443 pairs.
+INFO Wrote /Users/kritanabastola/Documents/Projects/retail-pricing-econometrics/reports/results/pricing_scenarios.json.
+=== tests ===
+........................................................................ [ 86%]
+...........                                                              [100%]
+=============================== warnings summary ===============================
+tests/unit/test_independent_benchmark.py::test_statsmodels_dummy_regression_matches_the_within_slope
+  /private/tmp/pricing-audit-venv/lib/python3.13/site-packages/statsmodels/formula/_manager.py:505: DeprecationWarning: Using dict data structures with formula is deprecated and will be removed in a future version of statsmodels. DataFrames are the only supported data structure.
+    _check_data(data)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+83 passed, 1 warning in 2.14s
+=== lint ===
+[1;32mAll checks passed![0m
+=== confirmatory coefficient ===
+-2.127546339203591 0.026069776011552 4707776

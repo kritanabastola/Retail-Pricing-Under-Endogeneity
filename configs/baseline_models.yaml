@@ -1,0 +1,141 @@
+# Baseline specifications for the cereals log sample.
+# Written before the Phase 4 fit. The confirmatory equation is still
+# configs/specifications.yaml. This file adds the comparison ladder and the
+# selection checks. It is not a license to add fixed effects after seeing β.
+
+sample:
+  dataset: data/processed/cereals_log_sample.parquet
+  audited: data/interim/cereals_movement_audited.parquet
+  quality: reports/results/data_quality.json
+  category: cereals
+  rules:
+    - OK equals 1
+    - PRICE > 0
+    - QTY > 0
+    - MOVE > 0
+  do_not_zero_fill: true
+  do_not_recode_sale_g_or_l: true
+
+outcome:
+  name: log_move
+  definition: natural log of MOVE
+  units: log item movement
+  excludes_zero_movement: true
+
+price:
+  name: log_unit_price
+  definition: natural log of PRICE / QTY
+  units: log dollars per item
+
+estimand: >
+  beta is the conditional log-log price association. A coefficient of beta
+  means that a 1 percent higher unit price is associated with approximately a
+  beta percent difference in item movement, holding the included controls and
+  fixed effects fixed. It is not, by itself, a causal elasticity.
+
+cluster:
+  primary: store
+  sensitivity: [week, store_and_week]
+  confidence_interval: student_t with degrees of freedom equal to the number of primary clusters minus 1
+
+not_included:
+  - upc_by_week
+  - store_by_week
+  - log_one_plus_move
+  - instruments
+
+models:
+  - id: M0_pooled_ols
+    role: descriptive pooled OLS
+    confirmatory: false
+    regressors: [log_unit_price]
+    absorb: []
+    identifying_variation: cross-section and time series together, including different products and stores
+
+  - id: M1_pooled_promotion
+    role: pooled OLS with the incomplete promotion indicator
+    confirmatory: false
+    regressors: [log_unit_price, promo_coded]
+    absorb: []
+    identifying_variation: same rows as M0, holding the coded B/C/S indicator fixed
+
+  - id: M2_upc
+    role: product fixed effects
+    confirmatory: false
+    regressors: [log_unit_price]
+    absorb: [upc]
+    identifying_variation: price differences within a UPC across stores and weeks
+
+  - id: M2_upc_and_store
+    role: additive product and store fixed effects
+    confirmatory: false
+    regressors: [log_unit_price]
+    absorb: [upc, store]
+    identifying_variation: price differences that are not a permanent UPC gap or a permanent store gap
+
+  - id: M3_pair
+    role: store-product pair fixed effects
+    confirmatory: false
+    regressors: [log_unit_price]
+    absorb: [pair]
+    identifying_variation: price changes inside a UPC-store pair
+
+  - id: M3_pair_week
+    role: pair and week fixed effects, promotion not partialled
+    confirmatory: false
+    regressors: [log_unit_price]
+    absorb: [pair, week]
+    identifying_variation: within-pair price changes that are not common to every cereal in that week
+
+  - id: M4_pair_month
+    role: pair effects with calendar-month seasonality
+    confirmatory: false
+    regressors: [log_unit_price]
+    absorb: [pair, month]
+    identifying_variation: within-pair price changes that are not a repeating calendar-month pattern
+
+  - id: M4_pair_year_month
+    role: pair effects with year-month time effects
+    confirmatory: false
+    regressors: [log_unit_price]
+    absorb: [pair, year_month]
+    identifying_variation: within-pair price changes that are not common to a calendar month in a given year
+
+  - id: M5_confirmatory
+    role: pre-specified confirmatory association
+    confirmatory: true
+    regressors: [log_unit_price, promo_coded]
+    absorb: [pair, week]
+    identifying_variation: >
+      within-pair unit-price changes that are not common to all cereals in the
+      week and not collinear with the coded promotion indicator. Chainwide
+      promotions of one UPC remain in this variation. UPC-by-week effects are
+      not used because they would absorb those promotions.
+
+selection_checks:
+  - id: L_level_pair_week
+    outcome: move
+    regressors: [unit_price]
+    absorb: [pair, week]
+    elasticity: false
+    note: items per dollar inside a pair and week. Not a log-log elasticity.
+  - id: P_ppml_pooled
+    outcome: move
+    regressors: [log_unit_price]
+    absorb: []
+    estimator: ppml
+    elasticity: conditional_mean
+  - id: P_ppml_pair
+    outcome: move
+    regressors: [log_unit_price]
+    absorb: [pair]
+    estimator: ppml
+    elasticity: conditional_mean
+  - id: S_restore_ok0
+    outcome: log_move
+    regressors: [log_unit_price, promo_coded]
+    absorb: [pair, week]
+    estimator: within_ols
+    sample: log sample plus OK not equal to 1 rows that still have positive price, quantity, and movement
+    elasticity: false
+    note: sign check required by the analysis plan. Not a replacement sample.

@@ -1,0 +1,42 @@
+[project]
+name = "pricing-research"
+version = "0.1.0"
+description = "Retail pricing under endogeneity: Dominick's demand estimation and counterfactual accounting"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Kritana Bastola" }]
+dependencies = [
+    "numpy>=2.1",
+    "pandas>=2.2",
+    "scipy>=1.14",
+    "statsmodels>=0.14",
+    "linearmodels>=6.0",
+    "pyarrow>=17.0",
+    "matplotlib>=3.9",
+    "seaborn>=0.13",
+    "streamlit>=1.39",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.1.1",
+    "ruff==0.16.10",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
